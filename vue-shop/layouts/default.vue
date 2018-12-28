@@ -2,11 +2,12 @@
   <v-app id="keep">
     <v-navigation-drawer
       v-model="drawer"
-      fixed
-      clipped
+      fixed="true"
       class="grey lighten-4"
       app
-    >
+      clipped
+      absolute
+      >
       <v-list
         dense
         class="grey lighten-4"
@@ -52,7 +53,7 @@
     </v-navigation-drawer>
     <v-toolbar color="amber" app absolute clipped-left>
       <v-toolbar-side-icon @click="drawer = !drawer"></v-toolbar-side-icon>
-      <span class="title ml-3 mr-5">Google&nbsp;<span class="font-weight-light">Keep</span></span>
+      <span class="title ml-3 mr-5">VueShop&nbsp;</span>
       <v-text-field
         solo-inverted
         flat
@@ -60,14 +61,38 @@
         label="Search"
         prepend-inner-icon="search"
       ></v-text-field>
+      <span>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         <router-link
+        to="/register"
+        tag="v-btn"
+        >
+          <v-btn small flat>Register&nbsp;</v-btn>
+        </router-link>
+      </span>
+      <span>
+        <router-link 
+        to="/login"
+        tag="v-btn"
+        >
+          <v-btn small flat>Login&nbsp;</v-btn>
+        </router-link>
+       
+      </span>
       <v-spacer></v-spacer>
     </v-toolbar>
-    <v-content>
-      <v-container fluid fill-height class="grey lighten-4">
-        <v-layout justify-center align-center>
-        </v-layout>
-      </v-container>
-    </v-content>
+  <v-content>
+    <v-container fluid fill-height class="grey lighten-4">
+      <v-layout justify-center align-center>
+        <nuxt />
+      </v-layout>
+    </v-container>
+  </v-content>
   </v-app>
 </template>
 
@@ -76,20 +101,9 @@
     data: () => ({
       drawer: null,
       items: [
-        { icon: 'lightbulb_outline', text: 'Notes' },
-        { icon: 'touch_app', text: 'Reminders' },
-        { divider: true },
-        { heading: 'Labels' },
-        { icon: 'add', text: 'Create new label' },
-        { divider: true },
-        { icon: 'archive', text: 'Archive' },
-        { icon: 'delete', text: 'Trash' },
-        { divider: true },
-        { icon: 'settings', text: 'Settings' },
-        { icon: 'chat_bubble', text: 'Trash' },
-        { icon: 'help', text: 'Help' },
-        { icon: 'phonelink', text: 'App downloads' },
-        { icon: 'keyboard', text: 'Keyboard shortcuts' }
+        { icon: 'label', text: 'Home', to: '/' },
+        { icon: 'shopping_cart', text: 'Items', to: '/itemList' },
+        { icon: 'add_shopping_cart', text: 'Sell', to: '/itemAdd' }
       ]
     }),
     props: {
