@@ -76,13 +76,13 @@
         </router-link>
       </span>
       <span>
-        <router-link 
+        <router-link
         to="/login"
         tag="v-btn"
         >
           <v-btn small flat>Login&nbsp;</v-btn>
         </router-link>
-       
+
       </span>
       <v-spacer></v-spacer>
     </v-toolbar>
@@ -98,7 +98,16 @@
 
 <script>
   export default {
-          { icon: 'dashboard', title: 'ltemList', to: '/itemList' },
+    data: () => ({
+      drawer: null,
+      items: [
+        { icon: 'label', text: 'Home', to: '/' },
+        { icon: 'shopping_cart', text: 'Items', to: '/itemList' },
+        { icon: 'add_shopping_cart', text: 'Sell', to: '/itemAdd' }
+      ]
+    }),
+    props: {
+      source: String
     }
   }
 </script>
