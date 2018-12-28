@@ -2,7 +2,6 @@
   <v-app id="keep">
     <v-navigation-drawer
       v-model="drawer"
-      fixed="true"
       class="grey lighten-4"
       app
       clipped
@@ -54,6 +53,7 @@
     <v-toolbar color="amber" app absolute clipped-left>
       <v-toolbar-side-icon @click="drawer = !drawer"></v-toolbar-side-icon>
       <span class="title ml-3 mr-5">VueShop&nbsp;</span>
+      <v-spacer></v-spacer>
       <v-text-field
         solo-inverted
         flat
@@ -61,21 +61,17 @@
         label="Search"
         prepend-inner-icon="search"
       ></v-text-field>
-      <span>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <v-spacer></v-spacer>
+      <v-flex xs2>
+        <span>
          <router-link
         to="/register"
         tag="v-btn"
         >
           <v-btn small flat>Register&nbsp;</v-btn>
         </router-link>
-      </span>
-      <span>
+        </span>
+        <span>
         <router-link
         to="/login"
         tag="v-btn"
@@ -83,8 +79,8 @@
           <v-btn small flat>Login&nbsp;</v-btn>
         </router-link>
 
-      </span>
-      <v-spacer></v-spacer>
+        </span>
+      </v-flex>      
     </v-toolbar>
   <v-content>
     <v-container fluid fill-height class="grey lighten-4">

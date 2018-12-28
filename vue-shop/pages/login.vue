@@ -10,7 +10,12 @@
         @click:append="show_password = !show_password">
       </v-text-field>
       <v-btn @click="login">login</v-btn>
-      <v-btn @click="register">register</v-btn>
+      <router-link 
+        to="/register"
+        tag="v-btn"
+      >
+        <v-btn @click="register">register</v-btn>
+      </router-link>
     </v-form>
   </v-layout>
 </template>
