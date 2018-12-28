@@ -1,102 +1,110 @@
 <template>
-  <v-app dark>
+  <v-app id="keep">
     <v-navigation-drawer
-      :mini-variant.sync="miniVariant"
-      :clipped="clipped"
       v-model="drawer"
-      fixed
+      fixed="true"
+      class="grey lighten-4"
       app
-    >
-      <v-list>
-        <v-list-tile
-          router
-          :to="item.to"
-          :key="i"
-          v-for="(item, i) in items"
-          exact
-        >
-          <v-list-tile-action>
-            <v-icon v-html="item.icon"></v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title v-text="item.title"></v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
+      clipped
+      absolute
+      >
+      <v-list
+        dense
+        class="grey lighten-4"
+      >
+        <template v-for="(item, i) in items">
+          <v-layout
+            v-if="item.heading"
+            :key="i"
+            row
+            align-center
+          >
+            <v-flex xs6>
+              <v-subheader v-if="item.heading">
+                {{ item.heading }}
+              </v-subheader>
+            </v-flex>
+            <v-flex xs6 class="text-xs-right">
+              <v-btn small flat>edit</v-btn>
+            </v-flex>
+          </v-layout>
+          <v-divider
+            v-else-if="item.divider"
+            :key="i"
+            dark
+            class="my-3"
+          ></v-divider>
+          <v-list-tile
+            v-else
+            :key="i"
+            @click=""
+          >
+            <v-list-tile-action>
+              <v-icon>{{ item.icon }}</v-icon>
+            </v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title class="grey--text">
+                {{ item.text }}
+              </v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+        </template>
       </v-list>
     </v-navigation-drawer>
-    <v-toolbar fixed app :clipped-left="clipped">
+    <v-toolbar color="amber" app absolute clipped-left>
       <v-toolbar-side-icon @click="drawer = !drawer"></v-toolbar-side-icon>
-      <v-btn
-        icon
-        @click.stop="miniVariant = !miniVariant"
-      >
-        <v-icon v-html="miniVariant ? 'chevron_right' : 'chevron_left'"></v-icon>
-      </v-btn>
-      <v-btn
-        icon
-        @click.stop="clipped = !clipped"
-      >
-        <v-icon>web</v-icon>
-      </v-btn>
-      <v-btn
-        icon
-        @click.stop="fixed = !fixed"
-      >
-        <v-icon>remove</v-icon>
-      </v-btn>
-      <v-toolbar-title v-text="title"></v-toolbar-title>
+      <span class="title ml-3 mr-5">VueShop&nbsp;</span>
+      <v-text-field
+        solo-inverted
+        flat
+        hide-details
+        label="Search"
+        prepend-inner-icon="search"
+      ></v-text-field>
+      <span>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         <router-link
+        to="/register"
+        tag="v-btn"
+        >
+          <v-btn small flat>Register&nbsp;</v-btn>
+        </router-link>
+      </span>
+      <span>
+        <router-link 
+        to="/login"
+        tag="v-btn"
+        >
+          <v-btn small flat>Login&nbsp;</v-btn>
+        </router-link>
+       
+      </span>
       <v-spacer></v-spacer>
-      <v-btn
-        icon
-        @click.stop="rightDrawer = !rightDrawer"
-      >
-        <v-icon>menu</v-icon>
-      </v-btn>
     </v-toolbar>
-    <v-content>
-      <v-container>
+  <v-content>
+    <v-container fluid fill-height class="grey lighten-4">
+      <v-layout justify-center align-center>
         <nuxt />
-      </v-container>
-    </v-content>
-    <v-navigation-drawer
-      temporary
-      :right="right"
-      v-model="rightDrawer"
-      fixed
-    >
-      <v-list>
-        <v-list-tile @click.native="right = !right">
-          <v-list-tile-action>
-            <v-icon light>compare_arrows</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-title>Switch drawer (click me)</v-list-tile-title>
-        </v-list-tile>
-      </v-list>
-    </v-navigation-drawer>
-    <v-footer :fixed="fixed" app>
-      <span>&copy; {{ new Date().getFullYear() }}</span>
-    </v-footer>
+      </v-layout>
+    </v-container>
+  </v-content>
   </v-app>
 </template>
 
 <script>
   export default {
-    data () {
-      return {
-        clipped: false,
-        drawer: true,
-        fixed: false,
-        items: [
-          { icon: 'apps', title: 'Welcome', to: '/' },
-          { icon: 'bubble_chart', title: 'Inspire', to: '/inspire' },
           { icon: 'dashboard', title: 'ltemList', to: '/itemList' },
-          { icon: 'dashboard', title: 'card', to: '/card' }
-        ],
-        miniVariant: false,
-        right: true,
-        rightDrawer: false,
-        title: 'Vuetify.js'
-      }
     }
   }
 </script>
+
+<style lang="stylus">
+  #keep
+    .v-navigation-drawer__border
+      display: none
+</style>
