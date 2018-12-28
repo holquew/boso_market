@@ -88,7 +88,9 @@
         fixed: false,
         items: [
           { icon: 'apps', title: 'Welcome', to: '/' },
-          { icon: 'bubble_chart', title: 'Inspire', to: '/inspire' }
+          { icon: 'bubble_chart', title: 'Inspire', to: '/inspire' },
+          { icon: 'dashboard', title: 'ltemList', to: '/itemList' },
+          { icon: 'dashboard', title: 'card', to: '/card' }
         ],
         miniVariant: false,
         right: true,
